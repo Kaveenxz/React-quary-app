@@ -1,6 +1,6 @@
 import { useState } from "react";
 import People from "./components/People";
-import Plannet from "./components/Plannet";
+import Plannets from "./components/Plannets";
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
       <Navbar setPage={setPage}/>
       <div className="content">
         {
-          page === 'planets' ? <Plannet/> : <People/>
+          page === 'planets' ? <Plannets/> : <People/>
         }
       </div>
     </div>
