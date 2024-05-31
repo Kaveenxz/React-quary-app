@@ -1,18 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useQuery } from 'react-query'
 import Planet from './Planet';
 
-const fetchPlannets = async ()=>{
-    const res =  await fetch('https://swapi.dev/api/planets/');
+const fetchPlannets = async ({ queryKey }) => {
+    const [_, page] = queryKey; 
+    const res = await fetch(`https://swapi.dev/api/planets/?page=${page}`);
     return res.json();
-}
-
+};
 function Plannets() {
-    const {data, status} = useQuery('plannets', fetchPlannets)
-    console.log(data)
+    const [page, setPage] = useState(1)
+    const {data, status} = useQuery(['plannets', page], fetchPlannets)
   return (
     <div>
         <h2>Planets</h2>
+        <button onClick={()=> setPage(1)}>page 1</button>
+        <button onClick={()=> setPage(2)}>page 2</button>
+        <button onClick={()=> setPage(3)}>page 3</button>
+
         {status === 'loading' && (
             <div>Loading data...</div>
         )}
