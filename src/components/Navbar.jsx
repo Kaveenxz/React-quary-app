@@ -1,8 +1,8 @@
-export default function Navbar() {
+export default function Navbar({setPage}) {
   return (
     <nav>
-        <button>Planets</button>
-        <button>People</button>
+        <button onClick={()=> {setPage('planets')}}>Planets</button>
+        <button onClick={()=> {setPage('Peoples')}}>People</button>
     </nav>
   )
 }
